@@ -1,0 +1,13 @@
+Neste arquivo diga quantos pontos você
+acha que deve ganhar em cada questão.
+1 - 2,5 
+    acredito que fiz tudo que a questão pediu
+2 -2,5
+    fiz o que se pediu e com um adicional de trocar o pokémom
+3 - 1,5
+    acredito que fiz tudo que a questão pediu,
+    porém não tenho certeza se foi da melhor forma,
+    pois faltei as aulas de async and await e não tive tempo de ver as videoaulas,
+    diferente das outras, que fiz baseadas no que vi em aula, essa fiz com conhecimentos prévios
+4 - 2,5
+    expliquei e mostrei exemplo com código

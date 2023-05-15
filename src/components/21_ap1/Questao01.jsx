@@ -11,7 +11,8 @@ function Questao01X (){ //function
     
       const [medias, setMedias] = useState([]);
       const [loading, setLoading] = useState(true);
-    
+      
+      //implemntação dica 1
       function calcularMedias(alunos) {
         const mediasAlunos = alunos.map((aluno) => {
           const media = (aluno.notas.ap1 + aluno.notas.ap2) / 2;
@@ -27,7 +28,8 @@ function Questao01X (){ //function
         setLoading(false);
       }, [alunos]);
     
-        function renderAlunosAprovados() {
+      //implementação dica 2
+      function renderAlunosAprovados() {
             const alunosAprovados = alunos.filter((aluno, index) => {
                 return medias[index] >= 6;
             });
@@ -39,6 +41,7 @@ function Questao01X (){ //function
       return (
         <div>
             <h3>Alunos Aprovados:</h3>
+            {/* implementação dica 3 */}
             {loading ? (
                 <p>Carregando...</p>
             ) : (

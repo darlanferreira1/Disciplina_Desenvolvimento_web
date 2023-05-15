@@ -10,7 +10,7 @@ const Questao02 = () => {
     const [imagem2, setImagem2] = useState('') /* imagem do pokemom */
     
     useEffect(() => { 
-        axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
+        axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`) //pegando a api do pokemon
         .then(
             (response) => { 
                 setNome(response.data.name)   
@@ -30,7 +30,7 @@ const Questao02 = () => {
     [id] /* quando o id mudar, ele vai executar o useEffect */
     )
 
-    const turn = () => {
+    const turn = () => { //função de virar
         if (imagem === imagem2) {
             setImagem(imagem)
             setImagem2(imagem)
@@ -40,11 +40,11 @@ const Questao02 = () => {
         }
     }
 
-    const next = () => {
+    const next = () => { //função de proximo
         setId((prev) => prev + 1)
     }
 
-    const previous = () => {
+    const previous = () => { //função de anterior
         setId((prev) => prev - 1)
     }
 

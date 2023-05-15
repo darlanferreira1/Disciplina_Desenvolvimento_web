@@ -18,6 +18,7 @@ const Avaliacao1 = () => {
 
             <div class="qt3">
                 <h1>Questão 3</h1>
+               
                 <Questao03/>
             </div>
         </prova>

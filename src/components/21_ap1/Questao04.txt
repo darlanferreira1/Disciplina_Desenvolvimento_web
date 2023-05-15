@@ -1,0 +1,51 @@
+GLUquadric
+ray casting
+
+
+O PROPS DRILLING ocorre quando informações são passadas através de várias camadas de componentes. pode deixar o código complexo,já que as informações precisam ser passadas manualmente por várias partes do código.
+
+Considerando um exemplo em que temos uma aplicação de carrinho de compras. Nessa aplicação, temos um componente <CarrinhoCompras> que é responsável por exibir os itens selecionados pelo usuário e seu respectivo total. Dentro desse componente, temos um componente <ItemCarrinho> que exibe os detalhes de cada item e um componente <TotalCarrinho> que exibe o total geral.
+
+Sem o uso de Contextos, precisaríamos passar os dados do carrinho de compras (itens e total) através de várias camadas de componentes, como <CarrinhoCompras> -> <ItemCarrinho> -> <TotalCarrinho>. Isso resultaria em um código complicado, com propagação desnecessária de informações.
+
+Com o uso de Contextos, podemos criar um contexto chamado CarrinhoContext, que conterá os dados do carrinho de compras. Esse contexto pode ser definido no componente <CarrinhoCompras> da seguinte forma:
+
+const CarrinhoContext = React.createContext();
+
+function CarrinhoCompras() {
+  const [itens, setItens] = useState([]);
+  const [total, setTotal] = useState(0);
+
+  // ... lógica para adicionar/remover itens e calcular o total ...
+
+  return (
+    <CarrinhoContext.Provider value={{ itens, total }}>
+      <ItemCarrinho />
+      <TotalCarrinho />
+    </CarrinhoContext.Provider>
+  );
+}
+
+Assim, em vez de passar os dados do carrinho de compras como propriedades, podemos acessá-los diretamente dentro dos componentes usando o contexto:
+
+
+function ItemCarrinho() {
+  const { itens } = useContext(CarrinhoContext);
+
+  // ... lógica para exibir os itens do carrinho ...
+
+  return (
+    // JSX para renderizar os itens do carrinho
+  );
+}
+
+function TotalCarrinho() {
+  const { total } = useContext(CarrinhoContext);
+
+  // ... lógica para exibir o total do carrinho ...
+
+  return (
+    // JSX para renderizar o total do carrinho
+  );
+}
+Com o uso do Contexto, não precisamos mais passar os dados do carrinho de compras manualmente através de props.

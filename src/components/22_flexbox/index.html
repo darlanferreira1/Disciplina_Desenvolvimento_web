@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        .container{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            background-color: #BDBDBD;
+            height: 500px;
+            align-items: center;
+            flex-wrap: wrap;
+            align-content: center;
+            row-gap: 10px;
+            column-gap: 30px;
+
+        }
+        
+        .bloco_1{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 40px;
+            display: flex;
+            background-color: #1976D2;
+            width: 100px;
+            height: 100px;
+            border-radius: 5%;
+            justify-content: center;
+            align-items: center;
+        }
+        .bloco_2{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 40px;
+            display: flex;
+            background-color: #E91E63;
+            width: 100px;
+            height: 100px;
+            border-radius: 5%;
+            justify-content: center;
+            align-items: center;
+        }
+        .bloco_3{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 40px;
+            display: flex;
+            background-color: #8BC34A;
+            width: 100px;
+            height: 100px;
+            border-radius: 5%;
+            justify-content: center;
+            align-items: center;
+            
+        }
+    </style>
+
+
+
+</head>
+<body>
+    <main class="container">
+        <div class="bloco_1">1</div>
+        <div class="bloco_2">2</div>
+        <div class="bloco_3">3</div>
+
+        <!-- <div class="bloco_1">4</div>
+        <div class="bloco_2">5</div>
+        <div class="bloco_3">6</div>
+
+        <div class="bloco_1">7</div>
+        <div class="bloco_2">8</div>
+        <div class="bloco_3">9</div>
+
+        <div class="bloco_1">10</div>
+        <div class="bloco_2">11</div>
+        <div class="bloco_3">12</div> -->
+    </main>
+
+    <div>
+        <h1>Cadastro de Devs</h1>
+        <p>complete suas informações</p>
+        <br>
+        
+        <form>
+            <fieldset> <!-- esse é um "agrupador de campos", uma caixa -->
+                <div> 
+                    <label> Nome </label> <!-- explicação do campo -->
+                    <input type="text" name="nome" id="nome">
+                </div>
+
+                <div> 
+                    <label> Sobreome </label> <!-- explicação do campo -->
+                    <input type="text" name="sobrenome" id="sobre nome">
+                </div>
+
+            </fieldset>
+        
+            <div>
+                <label>Email</label>
+                <input type="email" name="email" id="email">
+            </div>
+
+            <div>
+                <label>De qual lado da aplicação você desenvolve?</label>
+                
+                <label>
+                    <input type="radio" name="dev-web" value="frontend"> <!-- radio-buttons -->
+                    Front-end<!--  o que eu escrevo depois da tag input é o que aparece
+                    no navegador -->
+                </label>
+                 
+                <label>
+                    <!--esse checked é para deixar o botão previamente seleccionado-->
+                    <input type="radio" name="back-end" value="backend"
+                    checked 
+                    > <!-- radio-buttons -->
+                    Back-end<!--  o que eu escrevo depois da tag input é o que aparece
+                    no navegador -->
+                </label>
+
+                <label>
+                    <input type="radio" name="full-stack" value="Full-Stack"> <!-- radio-buttons -->
+                    Full-Stack<!--  o que eu escrevo depois da tag input é o que aparece
+                    no navegador -->
+                </label>
+            </div>
+
+            <div>
+                <label>Senioridade</label>
+                <select id="senioridade"> <!-- esse 'select' é o menu com setinha -->
+                    <option selected disabled value=""> Selecione</option> 
+                    <!-- o option acima é o selecionado por padrão
+                    disabled é para não deixar selecionar o primeiro item
+                    value="" é o valor que vai ser enviado para o servidor -->
+                    <option>Junior</option>
+                    <option>Pleno</option>
+                    <option>Senior</option>
+                </select>
+            </div>
+
+            <fieldset>
+                <label> Selecione as tecnologias que utiliza</label> <br><br>
+                <input type="checkbox" id="tecnologia1" name="tecnologia1" value="HTML"> HTML
+                
+                <input type="checkbox" id="tecnologia2" name="tecnologia2" value="CSS"> CSS
+                
+                <input type="checkbox" id="tecnologia3" name="tecnologia3" value="JavaScript"> JavaScript
+                
+                <input type="checkbox" id="tecnologia4" name="tecnologia4" value="PHP"> PHP
+                
+                <input type="checkbox" id="tecnologia5" name="tecnologia5" value="C#"> C#
+                
+                <input type="checkbox" id="tecnologia6" name="tecnologia6" value="Python"> Python
+                
+                <input type="checkbox" id="tecnologia7" name="tecnologia7" value="Java"> Java
+
+            </fieldset>
+
+        </form>
+    
+    </div>
+</body>
+</html>

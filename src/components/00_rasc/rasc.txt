@@ -1,0 +1,20 @@
+/01
+//import HelloWorld from './components/01_introducao/HelloWorld';
+//02
+//import Calculadora from './components/02_calculadora/01_Calculadora';
+//03
+//import MyProps from './components/03_props/03_MyProps';
+//04
+//import MeusDados from './components/04_atividade00/01_meusDados';
+//04
+//import MeusDados from './components/04_atividade00/02_MeusDados';
+//04
+//import Temperatura from './components/04_atividade00/03_temperatura';
+//05
+//import FunctionA from './components/05_HierarquiaDeProps/01_FunctionA';
+//13
+//import Cidades from './components/13_atividade03/01_Cidades';
+//06
+//import {Header,Body,Footer} from './components/06_MultiplosComponentes/01_multiplosComponentes';
+//  /* mesmo import anterior com aliasese */ import {Header as H,Body as H,Footer as R} from './components/06_MultiplosComponentes/01_multiplosComponentes';
+// /* importando tudo de umas vez e dando nome */ import * as Site from './components/06_MultiplosComponentes/01_multiplosComponentes';

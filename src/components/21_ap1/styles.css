@@ -1,0 +1,32 @@
+.container{
+    display: flex;
+    /* flex-direction: row; */
+    /* justify-content: center; */
+    /* background-color: #BDBDBD; */
+    /* height: 500px; */
+    /* align-items: center; */
+    /* flex-wrap: wrap; */
+    /* align-content: center; */
+    /* row-gap: 10px; */
+    /* column-gap: 30px; */
+}
+
+.qt1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.qt2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.qt3{
+    display: flex;
+}
+
+.qt4{
+    display: flex;
+}

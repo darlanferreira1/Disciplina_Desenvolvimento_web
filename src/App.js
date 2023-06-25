@@ -1,5 +1,8 @@
 //import logo from './logo.svg';
 import './App.css';
+import MainPage from './components/24_mui/02_crud/MainPage';
+// import SignIn from './components/24_mui/01_signIN/SignIn';
+// import MyMenu from './components/24_mui/02_crud/MyMenuV1';
 /* import PokemomAxios from './components/14_axios/axios';
  */
 
@@ -19,30 +22,14 @@ import './App.css';
 /* import MeuIndex   from './components/15_redux/v2/MeuIndex';
  */
 
-import Avaliacao1 from './components/21_ap1/avaliacao1';
+/* import Avaliacao1 from './components/21_ap1/avaliacao1';
+ */
+
+
 function App() {
   return(
-    <Avaliacao1 />
+    <MainPage />
   )
 }
-
-//lucas gabriel brito silveira codes
-/* function App() {
-  let array = [
-    { nome: "Fortaleza", votos: 0 },
-    { nome: "Quixadá", votos: 0 },
-    { nome: "Manchester", votos: 0 },
-    { nome: "São Paulo", votos: 0 }
-  ];
-  
-  return(
-    <div>
-      {array.forEach(function(cidade) {
-        <Cidades nome={cidade.nome} votos={cidade.votos} />
-      })}
-    </div>
-  );
-} */
-
 
 export default App;

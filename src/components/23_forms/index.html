@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- ligando css ao html -->
+    <link rel = "stylesheet" type="text/css" href="style.css" media="screen"> 
+    
+    <title>Aprendendo Forms</title>
+</head>
+<body>
+    <div class = "campo">
+        <h1 id="titulo">Cadastro de Devs</h1> <!-- como o "id" só é presente em um elemento, usamos
+        ele em algo importante e único, como o título da página -->
+        <p id="subtitulo">complete suas informações</p>
+        <br>
+        
+        <form>
+            <fieldset class="grupo"> <!-- esse é um "agrupador de campos", uma caixa -->
+                <div class = "campo"> 
+                    <label> Nome </label> <!-- explicação do campo -->
+                    <input type="text" name="nome" id="nome" required> <!-- o modificador required é 
+                    para que o campo seja obrigatório -->
+                </div>
+
+                <div class = "campo"> 
+                    <label> Sobrenome </label> <!-- explicação do campo -->
+                    <input type="text" name="sobrenome" id="sobre nome">
+                </div>
+
+            </fieldset>
+        
+            <div class = "campo">
+                <label>Email</label>
+                <input type="email" name="email" id="email">
+            </div>
+
+            <div class = "campo">
+                <label>De qual lado da aplicação você desenvolve?</label>
+                
+                <label>
+                    <input type="radio" name="dev-web" value="frontend"> <!-- radio-buttons -->
+                    Front-end<!--  o que eu escrevo depois da tag input é o que aparece
+                    no navegador -->
+                </label>
+                 
+                <label>
+                    <!--esse checked é para deixar o botão previamente seleccionado-->
+                    <input type="radio" name="back-end" value="backend"
+                    checked 
+                    > <!-- radio-buttons -->
+                    Back-end<!--  o que eu escrevo depois da tag input é o que aparece
+                    no navegador -->
+                </label>
+
+                <label>
+                    <input type="radio" name="full-stack" value="Full-Stack"> <!-- radio-buttons -->
+                    Full-Stack<!--  o que eu escrevo depois da tag input é o que aparece
+                    no navegador -->
+                </label>
+            </div>
+
+            <div class = "campo">
+                <label>Senioridade</label>
+                <select id="senioridade"> <!-- esse 'select' é o menu com setinha -->
+                    <option selected disabled value=""> Selecione</option> 
+                    <!-- o option acima é o selecionado por padrão
+                    disabled é para não deixar selecionar o primeiro item
+                    value="" é o valor que vai ser enviado para o servidor -->
+                    <option>Junior</option>
+                    <option>Pleno</option>
+                    <option>Senior</option>
+                </select>
+            </div>
+
+            <fieldset class="campo">
+            <div id="check">
+                <label> Selecione as tecnologias que utiliza</label> <br><br>
+                <input type="checkbox" id="tecnologia1" name="tecnologia1" value="HTML"> HTML
+                
+                <input type="checkbox" id="tecnologia2" name="tecnologia2" value="CSS"> CSS
+                
+                <input type="checkbox" id="tecnologia3" name="tecnologia3" value="JavaScript"> JavaScript
+                
+                <input type="checkbox" id="tecnologia4" name="tecnologia4" value="PHP"> PHP
+                
+                <input type="checkbox" id="tecnologia5" name="tecnologia5" value="C#"> C#
+                
+                <input type="checkbox" id="tecnologia6" name="tecnologia6" value="Python"> Python
+                
+                <input type="checkbox" id="tecnologia7" name="tecnologia7" value="Java"> Java
+            </div>
+            </fieldset>
+
+            <button class="botao"> Concluido </button>
+
+        </form>
+    
+    </div>
+</body>
+</html>

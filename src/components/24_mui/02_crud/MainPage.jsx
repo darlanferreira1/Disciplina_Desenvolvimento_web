@@ -32,7 +32,7 @@ const MainPage = () =>{
                         />
 
                         <Route
-                            path="editarProfessor"
+                            path="editarProfessor/:id"
                             element={<EditarProfessor />} // Componente associado a esse path
                         />
 

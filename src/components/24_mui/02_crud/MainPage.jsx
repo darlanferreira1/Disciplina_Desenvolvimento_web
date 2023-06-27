@@ -47,7 +47,7 @@ const MainPage = () =>{
                         />
 
                         <Route
-                            path="editarAluno"
+                            path="editarAluno/:id"
                             element={<EditarAluno />} // Componente associado a esse path
                         />
 

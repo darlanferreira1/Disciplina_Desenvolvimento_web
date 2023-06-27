@@ -1,7 +1,7 @@
 import { Box, Button, Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, InputLabel, MenuItem, Select, TextField, Typography } from "@mui/material"
 import { useState } from "react"
-
-
+import axios from "axios"
+import {useNavigate} from "react-router-dom"
 const Cadastrar = () => {
 
     // capturando os dados do form
@@ -11,6 +11,8 @@ const Cadastrar = () => {
     const [ai,setAi] = useState({cg:false,mc:false,al:false,es:false}) //checkbox
     let { cg, mc, al, es} = ai
 
+    const navigate = useNavigate()
+
     function handleCheckbox(event){
         setAi({
             ...ai,
@@ -18,13 +20,30 @@ const Cadastrar = () => {
         })
     }
 
+
     /* testando o submit */
     function handleSubmit(event) {
         event.preventDefault() // essa linha é pra página não recarregar ao vc recolher os dados
-            console.log(nome);
+            
+        /* console.log(nome);
             console.log(curso);
             console.log(titulacao);
-            console.log(ai)
+            console.log(ai) */
+            const novoProfessor = {nome,curso,titulacao,ai}
+            axios.post("http://localhost:3001/professores/register", novoProfessor)
+            .then(
+                (response) => {
+                    alert(`Professor ID ${response.data.id} cadastrado com sucesso!`)
+                    navigate("/listarProfessor") // quando é navagação na interface, se usa as 
+                    // nomeclaturas do react
+                }
+            )
+            .catch(
+                (error) => {
+                    console.log(error)
+                }
+            )
+
     }
 
     return (

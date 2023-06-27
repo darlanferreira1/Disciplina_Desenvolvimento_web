@@ -4,24 +4,69 @@ import EditIcon from '@mui/icons-material/Edit';
 import	{styled} from '@mui/material/styles';
 import TableCell, {tableCellClasses} from "@mui/material/TableCell";
 import {Link} from "react-router-dom";
+import {useState, useEffect} from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const Listar = () => {
 
     
+    
 
-    const professores = [
+    /* const professores = [
         {id: 0, nome: "Michael Corleone", curso: "SI", titulacao: "MEST"},
         {id: 1, nome: "Darlan Ferreira", curso: "CC", titulacao: "MEST"},
         {id: 2, nome: "Miles Morales", curso: "RC", titulacao: "MEST"},
         {id: 3, nome: "Penny Parker", curso: "ES", titulacao: "DOUT"},
         {id: 4, nome: "Gabriel Barbosa", curso: "CC", titulacao: "DOUT"},
         {id: 5, nome: "Bruna Lima", curso: "EC", titulacao: "GRAD"}
-    ]
+    ] */
 
-    function deleteProfessorById(id){
+    // ================= hora do express =================
+    const [professores, setProfessores] = useState([]) 
+    const navigate = useNavigate()
+    
+    useEffect(
+        () => {
+            axios.get("http://localhost:3001/professores/listar")
+            .then(
+                (response) => {
+                    //console.log(response)
+                    setProfessores(response.data)
+                }
+            )
+            .catch(
+                (error) => {
+                    console.log(error)
+                }
+            )
+        }, []
+    )
+
+
+    /* function deleteProfessorById(id){
         if(window.confirm("Deseja realmente excluir?")){
             alert("Professor " + id + " excluído com sucesso!")
         }
+    } */
+
+    function deleteProfessor(id){
+        if(window.confirm("Deseja realmente excluir?")){
+            axios.delete(`http://localhost:3001/professores/delete/${id}`)
+            .then(
+                (response) => {
+                    navigate("/listarProfessor")
+                    const resultado = professores.filter( professor => professor.id !== id)
+                    setProfessores(resultado)
+                }
+            )
+            .catch(
+                (error) => {
+                    console.log(error)
+                }
+            )
+        }
     }
+
 
     return(
         <>
@@ -46,6 +91,7 @@ const Listar = () => {
                    
                     <TableBody>
                         {
+                            
                             professores.map(
                                 (professor) => {
                                     return(
@@ -76,7 +122,7 @@ const Listar = () => {
                                                         aria-label="delete"
                                                         color="error"
 
-                                                        onClick = {() => deleteProfessorById(professor.id)}
+                                                        onClick = {() => deleteProfessor(professor.id)}
                                                     >
                                                         <DeleteIcon />
                                                     </IconButton>

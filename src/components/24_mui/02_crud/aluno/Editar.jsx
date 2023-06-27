@@ -1,10 +1,16 @@
 import { Box, Button, Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, InputLabel, MenuItem, Select, TextField, Typography } from "@mui/material"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { useParams, useNavigate } from "react-router-dom"
+import axios from "axios"
+
 
 const Editar = () => {
 
-    const [nomeA, setNomeA] = useState("")
-    const [cursoA, setCursoA] = useState("")
+    let {id} = useParams()
+    const navigate = useNavigate()
+
+    const [nome, setNome] = useState("")
+    const [curso, setCurso] = useState("")
     const [ira, setIra] = useState(0.0)
 
 
@@ -13,6 +19,46 @@ const Editar = () => {
     const [erroIra, setErroIra] = useState(false);
 
 
+    
+    /* const Alunos = [
+        {id: 0, nome: "Roger Guedes", curso: "SI", ira: 9.9 },
+        {id: 1, nome: "Maria Marques", curso: "CC", ira: 8.5},
+        {id: 2, nome: "Eliene Sulivan", curso: "RC", ira: 7.4},
+        {id: 3, nome: "Paulo Coelho", curso: "ES", ira: 10.0},
+        {id: 4, nome: "José Maria", curso: "CC", ira: 2.4},
+        {id: 5, nome: "Maria José", curso: "EC", ira: 4.2}
+    ]
+
+    function getAlunoById(id) {
+        for (let i = 0; i < Alunos.length; i++) {
+            if (Alunos[i].id == id) {
+                return Alunos[i];
+            }
+        }
+        return null;
+    } */
+
+    useEffect(() => {
+        /* let aluno = getAlunoById(id);
+        setNome(aluno.nome);
+        setCurso(aluno.curso);
+        setIra(aluno.ira); */
+
+        axios.get(`http://localhost:3001/alunos/retrieve/${id}`)
+        .then(
+            (response) => {
+                setNome(response.data.nome)
+                setCurso(response.data.curso)
+                setIra(response.data.ira)
+            }
+        )
+        .catch(
+            (error) => console.log(error)
+        )
+
+
+    }, [])
+
     function handleSubmit(event) {
         event.preventDefault() // essa linha é pra página não recarregar ao vc recolher os dados
         
@@ -20,10 +66,25 @@ const Editar = () => {
                 return;
             }
         
-            console.log(nomeA);
-            console.log(cursoA);
-            console.log(ira);
+            /* console.log(nome);
+            console.log(curso);
+            console.log(ira); */
+
+            const alunoAtualizado = {nome, curso, ira}
+            axios.put(`http://localhost:3001/alunos/update/${id}`,alunoAtualizado)
+            .then(
+                (response) => {
+                     alert(`Aluno ${id} atualizado com sucesso`)
+                      navigate("/listarAluno")
+                 }
+                )
+            .catch(
+                (error) => console.log(error)
+            )
+
+
     }
+
 
     return(
         
@@ -32,7 +93,7 @@ const Editar = () => {
                 variant="h5"
                 fontWeight={"bold"}
             >
-                Editar Aluno
+                Editar Aluno {id}
             </Typography>
 
             
@@ -50,11 +111,12 @@ const Editar = () => {
                     id="nome"
                     name="nome"
                     label="Nome completo"
+                    value = {nome}
                     
                     // linkando com a variável de estado
                     onChange={
                         (event) => {
-                            setNomeA(event.target.value)
+                            setNome(event.target.value)
                         }
                     }
                 />
@@ -66,10 +128,11 @@ const Editar = () => {
                     id="curso"
                     name="curso"
                     label="curso"
+                    value = {curso}
 
                     onChange={
                         (event) => {
-                            setCursoA(event.target.value)
+                            setCurso(event.target.value)
                         }
                     }
                 />
@@ -81,6 +144,7 @@ const Editar = () => {
                     id="IRA"
                     name="IRA"
                     label="IRA"
+                    value = {ira}
 
                     onChange={     
                         (event) => {
@@ -111,7 +175,7 @@ const Editar = () => {
                         my: 2
                     }}
                 >
-                    Editar
+                    Atualizar
                 </Button>
                 </Box>
 

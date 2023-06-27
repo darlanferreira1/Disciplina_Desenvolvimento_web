@@ -4,19 +4,90 @@ import EditIcon from '@mui/icons-material/Edit';
 import	{styled} from '@mui/material/styles';
 import TableCell, {tableCellClasses} from "@mui/material/TableCell";
 import {Link} from "react-router-dom";
+import {useState, useEffect} from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Listar = () => {
 
     
 
-    const Alunos = [
+    /* const Alunos = [
         {id: 0, nome: "Roger Guedes", curso: "SI", ira: 9.9 },
         {id: 1, nome: "Maria Marques", curso: "CC", ira: 8.5},
         {id: 2, nome: "Eliene Sulivan", curso: "RC", ira: 7.4},
         {id: 3, nome: "Paulo Coelho", curso: "ES", ira: 10.0},
         {id: 4, nome: "José Maria", curso: "CC", ira: 2.4},
         {id: 5, nome: "Maria José", curso: "EC", ira: 4.2}
-    ]
+    ] */
+
+
+    // ================= hora do express =================
+    const [Alunos, setAlunos] = useState([])
+    const navigate = useNavigate()
+
+    useEffect(
+        () => {
+            axios.get("http://localhost:3001/alunos/listar")
+            .then(
+                (response) => {
+                    //console.log(response)
+
+                    setAlunos(response.data)
+                }
+            )
+            .catch(
+                (error) => {
+                    console.log(error)
+                }
+            )
+        }, []
+    )
+    
+
+    /* function deleteAlunoById(id){
+        if(window.confirm("Deseja realmente excluir?")){
+            alert("Aluno " + id + " excluído com sucesso!")
+        }
+    } */
+
+    function deleteAluno(id){
+        if(window.confirm("Deseja realmente excluir?")){
+            axios.delete(`http://localhost:3001/alunos/delete/${id}`)
+            .then(
+                (response) => {
+                    navigate("/listarAluno")
+                    const resultado = Alunos.filter(
+                        (Aluno) => {                        
+                            return Aluno.id !== id
+                        }
+                    )
+                    setAlunos(resultado)
+
+                    alert("Aluno " + id + " excluído com sucesso!")
+
+                    
+                }
+            )
+            .catch(
+                (error) => {
+                    console.log(error)
+                }
+            )
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
     return(
         <>
@@ -57,7 +128,7 @@ const Listar = () => {
                                                         color="primary"
 
                                                         component = {Link}
-                                                        to = "/editarAluno"
+                                                        to = {`/editarAluno/${Aluno.id}`}
                                                     >
                                                         <EditIcon />
                                                     </IconButton>
@@ -65,6 +136,8 @@ const Listar = () => {
                                                     <IconButton
                                                         aria-label="delete"
                                                         color="error"
+
+                                                        onClick = {() => deleteAluno(Aluno.id)}
                                                     >
                                                         <DeleteIcon />
                                                     </IconButton>
@@ -86,6 +159,7 @@ const Listar = () => {
 
     )
 }
+
 
 //================================== beautiful tables ;-; ==================================
 

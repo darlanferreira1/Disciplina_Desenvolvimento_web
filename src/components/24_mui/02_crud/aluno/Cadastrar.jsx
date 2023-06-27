@@ -1,13 +1,14 @@
 import { Box, Button, Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, InputLabel, MenuItem, Select, TextField, Typography } from "@mui/material"
 import { useState } from "react"
-
+import axios from "axios"
+import {useNavigate} from "react-router-dom"
 const Cadastrar = () => {
 
-    const [nomeA, setNomeA] = useState("")
-    const [cursoA, setCursoA] = useState("")
+    const [nome, setNome] = useState("")
+    const [curso, setCurso] = useState("")
     const [ira, setIra] = useState(0.0)
 
-
+    const navigate = useNavigate()
     // ======================= tratar erro do ira ========================
 
     const [erroIra, setErroIra] = useState(false);
@@ -20,9 +21,25 @@ const Cadastrar = () => {
                 return;
             }
         
-            console.log(nomeA);
-            console.log(cursoA);
-            console.log(ira);
+            /* console.log(nome);
+            console.log(curso);
+            console.log(ira); */
+
+            const novoAluno = {nome,curso,ira}
+            axios.post("http://localhost:3001/alunos/register", novoAluno)
+            .then(
+                (response) => {
+                    alert(`Aluno ID ${response.data.id} cadastrado com sucesso!`)
+                    navigate("/listarAluno") // quando é navagação na interface, se usa as
+                }
+            )
+            .catch(
+                (error) => {
+                    console.log(error)
+                }
+            )
+                
+            
     }
 
     return(
@@ -34,6 +51,7 @@ const Cadastrar = () => {
             >
                 Cadastrar Aluno
             </Typography>
+
 
             
             <Box
@@ -54,7 +72,7 @@ const Cadastrar = () => {
                     // linkando com a variável de estado
                     onChange={
                         (event) => {
-                            setNomeA(event.target.value)
+                            setNome(event.target.value)
                         }
                     }
                 />
@@ -69,7 +87,7 @@ const Cadastrar = () => {
 
                     onChange={
                         (event) => {
-                            setCursoA(event.target.value)
+                            setCurso(event.target.value)
                         }
                     }
                 />

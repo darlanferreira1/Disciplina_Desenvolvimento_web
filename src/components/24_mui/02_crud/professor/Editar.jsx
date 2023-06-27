@@ -1,11 +1,14 @@
 import { Box, Button, Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, InputLabel, MenuItem, Select, TextField, Typography } from "@mui/material"
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate} from "react-router-dom"
+import axios from "axios"
+
 
 
 const Editar = () => {
 
     let {id} = useParams()
+    const navigate = useNavigate()
 
     // capturando os dados do form
     const [nome, setNome] = useState("")
@@ -21,7 +24,7 @@ const Editar = () => {
         })
     }
 
-    const professores = [
+    /* const professores = [
         {id: 0, nome: "Michael Corleone", curso: "SI", titulacao: "MEST", ai:{cg:true,mc:false,al:false,es:false}},
         {id: 1, nome: "Darlan Ferreira", curso: "CC", titulacao: "MEST", ai:{cg:false,mc:true,al:false,es:false}},
         {id: 2, nome: "Miles Morales", curso: "RC", titulacao: "MEST", ai:{cg:false,mc:false,al:true,es:false}},
@@ -37,15 +40,30 @@ const Editar = () => {
             }
         }
         return null
-    }
+    } */
     
     // como está vazio o use efct funciona como um construtor
     useEffect(() => {
-        let professor = getProfessorById(id)
+        /* let professor = getProfessorById(id)
         setNome(professor.nome)
         setCurso(professor.curso)
         setTitulacao(professor.titulacao)
-        setAi(professor.ai)
+        setAi(professor.ai) */
+
+        // com axios
+        axios.get(`http://localhost:3001/professores/retrieve/${id}`)
+        .then(
+            (response) => {
+                setNome(response.data.nome)
+                setCurso(response.data.curso)
+                setTitulacao(response.data.titulacao)
+                setAi(response.data.ai)
+            }
+        )
+        .catch(
+            (error) => console.log(error)
+        )
+
     }
     ,
     [])
@@ -54,10 +72,22 @@ const Editar = () => {
     /* testando o submit */
     function handleSubmit(event) {
         event.preventDefault() // essa linha é pra página não recarregar ao vc recolher os dados
-            console.log(nome);
+           /*  console.log(nome);
             console.log(curso);
             console.log(titulacao);
-            console.log(ai)
+            console.log(ai) */
+            const professorAtualizado = {nome, curso, titulacao, ai}
+            axios.put(`http://localhost:3001/professores/update/${id}`,professorAtualizado)
+            .then(
+                (response) => {
+                   alert(`Professor ${id} atualizado com sucesso`)
+                    navigate("/listarProfessor")
+                }
+            )
+            .catch(
+                (error) => console.log(error)
+            )
+
     }
 
     return (

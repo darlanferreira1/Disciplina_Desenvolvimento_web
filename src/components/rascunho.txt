@@ -1,0 +1,7 @@
+rodar mongo:
+no caminho: download_mongodb\mongodb-606\bin>
+executar: ./mongod --dbpath ../datadir
+
+ABRIR OUTRA ABA
+no caminho: download_mongodb\mongosh\bin>
+executar: ./mongosh.exe

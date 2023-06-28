@@ -29,7 +29,7 @@ const Cadastrar = () => {
             axios.post("http://localhost:3001/alunos/register", novoAluno)
             .then(
                 (response) => {
-                    alert(`Aluno ID ${response.data.id} cadastrado com sucesso!`)
+                    alert(`Aluno ID ${response.data._id} cadastrado com sucesso!`)
                     navigate("/listarAluno") // quando é navagação na interface, se usa as
                 }
             )

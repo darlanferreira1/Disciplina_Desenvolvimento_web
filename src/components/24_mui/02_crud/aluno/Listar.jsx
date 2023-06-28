@@ -59,7 +59,7 @@ const Listar = () => {
                     navigate("/listarAluno")
                     const resultado = Alunos.filter(
                         (Aluno) => {                        
-                            return Aluno.id !== id
+                            return Aluno._id !== id
                         }
                     )
                     setAlunos(resultado)
@@ -116,7 +116,7 @@ const Listar = () => {
                                 (Aluno) => {
                                     return(
                                         <TableRow>
-                                            <StyledTableCell align="center" key = {Aluno.id}>{Aluno.id}</StyledTableCell>
+                                            <StyledTableCell align="center" key = {Aluno._id}>{Aluno._id}</StyledTableCell>
                                             <StyledTableCell>{Aluno.nome}</StyledTableCell>
                                             <StyledTableCell>{Aluno.curso}</StyledTableCell>
                                             <StyledTableCell>{Aluno.ira}</StyledTableCell>
@@ -128,7 +128,7 @@ const Listar = () => {
                                                         color="primary"
 
                                                         component = {Link}
-                                                        to = {`/editarAluno/${Aluno.id}`}
+                                                        to = {`/editarAluno/${Aluno._id}`}
                                                     >
                                                         <EditIcon />
                                                     </IconButton>
@@ -137,7 +137,7 @@ const Listar = () => {
                                                         aria-label="delete"
                                                         color="error"
 
-                                                        onClick = {() => deleteAluno(Aluno.id)}
+                                                        onClick = {() => deleteAluno(Aluno._id)}
                                                     >
                                                         <DeleteIcon />
                                                     </IconButton>

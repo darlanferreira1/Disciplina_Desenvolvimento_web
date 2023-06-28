@@ -33,7 +33,7 @@ const Cadastrar = () => {
             axios.post("http://localhost:3001/professores/register", novoProfessor)
             .then(
                 (response) => {
-                    alert(`Professor ID ${response.data.id} cadastrado com sucesso!`)
+                    alert(`Professor ID ${response.data._id} cadastrado com sucesso!`)
                     navigate("/listarProfessor") // quando é navagação na interface, se usa as 
                     // nomeclaturas do react
                 }

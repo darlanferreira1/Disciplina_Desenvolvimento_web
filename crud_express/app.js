@@ -7,6 +7,10 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+// ======================================= rotas mongo =======================================
+require('./db/mongo.connection'); 
+
+
 // ============================================ my routes ============================
 var professores = require('./routes/professores');
 var alunos = require('./routes/alunos');

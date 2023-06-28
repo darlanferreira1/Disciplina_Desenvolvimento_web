@@ -1,5 +1,6 @@
 const AlunoModel = require('../models/aluno.models');
 
+
 let Alunos = [
     {id: 0, nome: "Roger Guedes", curso: "SI", ira: 9.9 },
     {id: 1, nome: "Maria Marques", curso: "CC", ira: 8.5},

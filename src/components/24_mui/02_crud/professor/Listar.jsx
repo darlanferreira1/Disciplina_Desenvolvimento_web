@@ -55,7 +55,7 @@ const Listar = () => {
             .then(
                 (response) => {
                     navigate("/listarProfessor")
-                    const resultado = professores.filter( professor => professor.id !== id)
+                    const resultado = professores.filter( professor => professor._id !== id)
                     setProfessores(resultado)
                 }
             )
@@ -96,7 +96,7 @@ const Listar = () => {
                                 (professor) => {
                                     return(
                                         <TableRow>
-                                            <StyledTableCell align="center" key = {professor.id}>{professor.id}</StyledTableCell>
+                                            <StyledTableCell align="center" key = {professor._id}>{professor._id}</StyledTableCell>
                                             <StyledTableCell>{professor.nome}</StyledTableCell>
                                             <StyledTableCell>{professor.curso}</StyledTableCell>
                                             <StyledTableCell>{professor.titulacao}</StyledTableCell>
@@ -109,7 +109,7 @@ const Listar = () => {
 
                                                         /* linkando: */
                                                         component = {Link}
-                                                        to = {`/editarProfessor/${professor.id}`}
+                                                        to = {`/editarProfessor/${professor._id}`}
 
                                                     >
                                                         <EditIcon 
@@ -122,7 +122,7 @@ const Listar = () => {
                                                         aria-label="delete"
                                                         color="error"
 
-                                                        onClick = {() => deleteProfessor(professor.id)}
+                                                        onClick = {() => deleteProfessor(professor._id)}
                                                     >
                                                         <DeleteIcon />
                                                     </IconButton>
